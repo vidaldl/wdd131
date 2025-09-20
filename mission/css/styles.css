@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #f8f8f8;
+    line-height: 1.6;
+}
+
+main {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: white;
+    border: 2px solid #ccc;
+    text-align: center;
+}
+
+h1 {
+    font-size: 1.8em;
+    letter-spacing: 0.3em;
+    margin-bottom: 10px;
+    font-weight: normal;
+    color: #333;
+}
+
+h2 {
+    font-size: 1em;
+    letter-spacing: 0.2em;
+    color: #4a90e2;
+    margin-bottom: 30px;
+    font-weight: normal;
+}
+
+p {
+    text-align: left;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1em;
+}
+
+.intro {
+    font-style: italic;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+ol {
+    text-align: left;
+    padding-left: 20px;
+    margin-bottom: 40px;
+}
+
+ol li {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.logo {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.byu {
+    font-size: 3em;
+    font-weight: bold;
+    color: #4a90e2;
+    letter-spacing: 0.1em;
+    margin-bottom: -10px;
+}
+
+.idaho {
+    font-size: 1.2em;
+    color: #4a90e2;
+    letter-spacing: 0.3em;
+    font-weight: normal;
+}
