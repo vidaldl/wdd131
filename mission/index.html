@@ -6,12 +6,18 @@
     <link rel="icon" type="image/x-icon" href="static/favicon.ico">
     <title>Ponder - A CSS Metaprogramming Tool</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="mission.js" defer></script>
 
     <meta name="description" content="BYU-Idaho Mission Statement">
     <meta name="author" content="Leo Vidal">
 </head>
 <body>
     <main>
+        <select id="theme-selector">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+        </select>
+        
         <h1>MISSION STATEMENT</h1>
         <h2>BRIGHAM YOUNG UNIVERSITY-IDAHO</h2>
         
@@ -27,7 +33,7 @@
         </ol>
 
         <div class="logo">
-            <img src="public/byui-logo-blue.webp" alt="BYU-Idaho Logo" width="200">
+            <img id="logo-img" src="public/byui-logo-blue.webp" alt="BYU-Idaho Logo" width="200">
         </div>
     </main>
 </body>
