@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8" />
+        <title>Site Plan | Leo Vidal</title>
+        <link type="text/css" rel="stylesheet" href="styles/site-plan.css" />
+    </head>
+
+    <body>
+        <header>
+            <h1>Leo Vidal | Portfolio Site Plan</h1>
+            <h2>Leo Vidal</h2>
+            <h2>WDD 131.04</h2>
+            </header>
+        <main>
+            <hr />
+            <h2>Overview</h2>
+            <h3>Purpose</h3>
+            <p>
+                The purpose of this website is to establish my personal brand as a competent Junior Fullstack Web Developer. 
+                It will serve as a digital portfolio to showcase my technical proficiency in JavaScript, Python, and PHP, 
+                demonstrating my ability to build responsive and dynamic web applications.
+            </p>
+
+            <h3>Audience</h3>
+            <p>
+                My primary audience consists of hiring managers, technical recruiters, and senior developers at tech companies 
+                who are looking to hire a Junior Fullstack Developer. They value clean code, modern design, and clear 
+                communication of technical skills.
+            </p>
+
+            <h3>Dynamic elements</h3>
+            <p>
+                I will demonstrate my JavaScript mastery by building an interactive "Skills Tracker" on the child page.
+                <br><br>
+                1. <strong>Objects & Arrays:</strong> I will store my skills (JS, Python, PHP) and proficiency levels in an <code>Array of Objects</code>.
+                <br>
+                2. <strong>ES Modules:</strong> I will store this data in a separate module file and import it into the main script.
+                <br>
+                3. <strong>Array Methods:</strong> I will use the <code>.map()</code> method to iterate through the array and dynamically generate HTML progress bars for each skill.
+                <br>
+                4. <strong>DOM & Events:</strong> I will add "View Details" buttons that listen for <code>click</code> events.
+                <br>
+                5. <strong>Conditionals:</strong> Inside the event listener, I will use conditional branching (if/else) to toggle the visibility of the skill descriptions (expanding or collapsing the card).
+            </p>
+
+            <hr />
+            <h2>Branding</h2>
+            <h3>Website Logo</h3>
+            <img id="logo" src="images/logo.png" alt="Leo Vidal Dev Logo" />
+            <hr />
+            <h2>Style Guide</h2>
+
+            <h3>Color Palette</h3>
+            Palette URL:
+            <a
+                href="https://coolors.co/222831-393e46-00adb5-eeeeee"
+                target="_blank"
+                >https://coolors.co/222831-393e46-00adb5-eeeeee</a
+            >
+
+            <table class="colors">
+                <tbody>
+                    <tr>
+                        <th>Primary</th>
+                        <th>Secondary</th>
+                        <th>Accent 1</th>
+                        <th>Accent 2</th>
+                    </tr>
+                    <tr>
+                        <td class="primary">[#222831]</td>
+                        <td class="secondary">[#393E46]</td>
+                        <td class="accent1">[#00ADB5]</td>
+                        <td class="accent2">[#EEEEEE]</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Typography</h3>
+            <h4>
+                Heading Font: 'Roboto', sans-serif
+                </h4>
+            <h4>
+                Paragraph Font: 'Open Sans', sans-serif
+                </h4>
+            <h3>Normal paragraph example</h3>
+            <p>
+                I am a passionate web developer with a focus on full-stack technologies. 
+                My goal is to create software that is not only functional but also accessible and performant. 
+                I enjoy solving complex problems using Python and JavaScript.
+            </p>
+            <h3>Colored paragraph example</h3>
+            <p class="colored">
+                I am a passionate web developer with a focus on full-stack technologies. 
+                My goal is to create software that is not only functional but also accessible and performant. 
+                I enjoy solving complex problems using Python and JavaScript.
+            </p>
+
+            <h3>Navigation</h3>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Skills & Tech</a>
+            </nav>
+            <hr />
+
+            <h2>Content</h2>
+            <h3>Home page</h3>
+            <p>
+                <strong>Headline:</strong> Building the Web of Tomorrow.
+                <br>
+                <strong>Intro Text:</strong> Hi, I'm Leo Vidal. I am a Junior Fullstack Developer based in [Location]. I specialize in building robust web applications using modern technologies.
+                <br>
+                <strong>Featured Section:</strong> A brief look at my coding philosophy: Clean Code, User-Centric Design, and Continuous Learning.
+                <br>
+                <strong>Call to Action:</strong> "Check out my Technical Skills" (Link to child page).
+                <br>
+                <strong>Images:</strong> A professional profile photo (headshot) and a background hero image of code or a dark workspace setup (I'll be working on this).
+            </p>
+            
+            <h3>Page 2: Skills Tracker</h3>
+            <p>
+                <strong>Headline:</strong> Technical Proficiency
+                <br>
+                <strong>Intro Text:</strong> Below is a dynamic overview of my current technology stack. I am constantly learning and updating these skills.
+                <br>
+                <strong>Data to be used (in Array/Objects):</strong>
+                <br>
+                - <strong>JavaScript:</strong> Advanced DOM manipulation, ES6+, Async/Await.
+                <br>
+                - <strong>Python:</strong> Scripting, Data handling, Back-end logic.
+                <br>
+                - <strong>PHP:</strong> Server-side form processing, Database connectivity.
+                <br>
+                <strong>Interaction:</strong> Users can click on a skill card to expand it and read about specific projects I have built with that language.
+            </p>
+            
+            <h2>Wireframes</h2>
+            <p>
+                Create two wireframes for your site. One for each page and list them
+                here
+            </p>
+
+            <h3>Home</h3>
+            <p>
+                The Home page features a large Hero Image with my name and title centered. 
+                Below that is a 3-column section highlighting my core values.
+            </p>
+            <img src="images/index-page.png" alt="home page wireframe" />
+
+            <h3>Page 2: Skills</h3>
+            <p>
+                The Skills page features a grid layout. Each card represents a language (JS, Python, PHP).
+                The progress bars are generated by JavaScript.
+            </p>
+            <img src="images/skills-page.png" alt="page 2 wireframe" />
+        </main>
+    </body>
+</html>
