@@ -1,0 +1,45 @@
+[
+  {
+    "name": "JavaScript",
+    "proficiency": 90,
+    "category": "Frontend",
+    "description": "ES6+ JavaScript for building interactive tooling and UI.",
+    "details": "Used JavaScript extensively in \"Canvas Admin Tools V2\"—structuring features into reusable functions/modules, handling user interactions, and working with asynchronous flows where needed.",
+    "projects": [
+      {
+        "title": "Canvas Admin Tools V2",
+        "url": "https://github.com/vidaldl/Admin-Tools-v2"
+      }
+    ]
+  },
+  {
+    "name": "Python",
+    "proficiency": 80,
+    "category": "Backend",
+    "description": "Python for backend-style scripting, data handling, and automation.",
+    "details": "Built \"Caught Up\" in Python, focusing on clear program structure and practical data handling/automation patterns.",
+    "projects": [
+      {
+        "title": "Caught Up",
+        "url": "https://github.com/vidaldl/caughtUP"
+      }
+    ]
+  },
+  {
+    "name": "PHP",
+    "proficiency": 75,
+    "category": "Backend",
+    "description": "Server-side form processing, Database connectivity.",
+    "details": "Built server-side pages and form handling with PHP, including database-backed patterns (e.g., CRUD-style workflows) where applicable.",
+    "projects": [
+    ]
+  },
+  {
+    "name": "React",
+    "proficiency": 80,
+    "category": "Frontend",
+    "description": "Components, props/state, hooks, and client-side routing.",
+    "details": "Comfortable building component-based UIs with hooks/state and wiring UI to data; add a React project link here if you want this section to be project-grounded like the others.",
+    "projects": []
+  }
+]
