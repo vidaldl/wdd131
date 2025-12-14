@@ -1,19 +1,26 @@
 import { loadSkills } from "./skills-data.js";
 
-function createProgressBar(proficiency, labelText) {
+function createProgressBar(proficiency, skillName, index) {
+  let value = parseInt(proficiency, 10);
+  if (Number.isNaN(value)) value = 0;
+
+
   const wrapper = document.createElement("div");
   wrapper.className = "progress";
 
-  const label = document.createElement("span");
+  const id = `skill-progress-${index}`;
+
+  const label = document.createElement("label");
   label.className = "progress__label";
-  label.textContent = `${proficiency}%`;
+  label.htmlFor = id;
+  label.textContent = `${skillName}: ${value}%`;
 
   const bar = document.createElement("progress");
   bar.className = "progress__bar";
-  bar.value = proficiency;
+  bar.id = id;
+  bar.value = value;
   bar.max = 100;
-  bar.setAttribute("aria-label", labelText);
-  bar.textContent = `${proficiency}%`;
+  bar.textContent = `${value}%`;
 
   wrapper.appendChild(label);
   wrapper.appendChild(bar);
@@ -22,6 +29,7 @@ function createProgressBar(proficiency, labelText) {
 }
 
 function createProjectsList(projects) {
+  if (!Array.isArray(projects) || projects.length === 0) return null;
 
   const wrapper = document.createElement("div");
   wrapper.className = "skill-projects";
@@ -32,14 +40,17 @@ function createProjectsList(projects) {
   const list = document.createElement("ul");
 
   projects.forEach((project) => {
-    if (!project || !project.title || !project.url) {
-      return;
-    }
-    const li = document.createElement("li");
+    if (!project) return;
 
+    const title = project.title;
+    const url = project.url;
+
+    if (!title || !url) return;
+
+    const li = document.createElement("li");
     const a = document.createElement("a");
-    a.href = project.url;
-    a.textContent = project.title;
+    a.href = url;
+    a.textContent = title;
     a.target = "_blank";
     a.rel = "noopener noreferrer";
 
@@ -56,25 +67,31 @@ function createProjectsList(projects) {
 }
 
 function createSkillCard(skill, index) {
-  const name = skill?.name ?? "Skill";
-  const proficiency = Number(skill?.proficiency ?? 0);
-  const description = skill?.description ?? "";
-  const detailsText = skill?.details ?? "";
-
   const card = document.createElement("article");
   card.className = "card skill-card";
+
+  let name = "Skill";
+  let proficiency = 0;
+  let description = "";
+  let detailsText = "";
+  let projects = [];
+
+  if (skill) {
+    if (skill.name) name = skill.name;
+    if (skill.proficiency !== undefined) proficiency = skill.proficiency;
+    if (skill.description) description = skill.description;
+    if (skill.details) detailsText = skill.details;
+    if (Array.isArray(skill.projects)) projects = skill.projects;
+  }
 
   const title = document.createElement("h3");
   title.textContent = name;
 
+  const progress = createProgressBar(proficiency, name, index);
+
   const desc = document.createElement("p");
   desc.className = "skill-description";
   desc.textContent = description;
-
-  const progress = createProgressBar(
-    Number.isFinite(proficiency) ? Math.max(0, Math.min(100, proficiency)) : 0,
-    `${name} proficiency`
-  );
 
   const detailsId = `skill-details-${index}`;
 
@@ -96,10 +113,8 @@ function createSkillCard(skill, index) {
     details.appendChild(p);
   }
 
-  const projects = createProjectsList(skill?.projects);
-  if (projects) {
-    details.appendChild(projects);
-  }
+  const projectsEl = createProjectsList(projects);
+  if (projectsEl) details.appendChild(projectsEl);
 
   card.appendChild(title);
   card.appendChild(progress);
@@ -111,15 +126,9 @@ function createSkillCard(skill, index) {
 }
 
 function setExpanded(button, detailsEl, expanded) {
-  if (expanded) {
-    button.setAttribute("aria-expanded", "true");
-    button.textContent = "Hide Details";
-    detailsEl.hidden = false;
-  } else {
-    button.setAttribute("aria-expanded", "false");
-    button.textContent = "View Details";
-    detailsEl.hidden = true;
-  }
+  button.setAttribute("aria-expanded", expanded ? "true" : "false");
+  button.textContent = expanded ? "Hide Details" : "View Details";
+  detailsEl.hidden = !expanded;
 }
 
 function collapseAllExcept(containerEl, activeButton) {
@@ -132,8 +141,7 @@ function collapseAllExcept(containerEl, activeButton) {
     const detailsEl = detailsId ? document.getElementById(detailsId) : null;
     if (!detailsEl) return;
 
-    const expanded = button.getAttribute("aria-expanded") === "true";
-    if (expanded) {
+    if (button.getAttribute("aria-expanded") === "true") {
       setExpanded(button, detailsEl, false);
     }
   });
@@ -141,15 +149,14 @@ function collapseAllExcept(containerEl, activeButton) {
 
 async function init() {
   const grid = document.getElementById("skills-grid");
-
-  if (!grid) {
-    return;
-  }
+  if (!grid) return;
 
   const skills = await loadSkills();
+  if (!Array.isArray(skills)) return;
 
-  const cards = skills.map((skill, index) => createSkillCard(skill, index));
-  cards.forEach((card) => grid.appendChild(card));
+  skills.forEach((skill, index) => {
+    grid.appendChild(createSkillCard(skill, index));
+  });
 
   grid.addEventListener("click", (event) => {
     const button = event.target.closest(".details-toggle");
