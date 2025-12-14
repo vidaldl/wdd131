@@ -24,9 +24,6 @@ function createProgressBar(proficiency, labelText) {
 }
 
 function createProjectsList(projects) {
-  if (!Array.isArray(projects) || projects.length === 0) {
-    return null;
-  }
 
   const wrapper = document.createElement("div");
   wrapper.className = "skill-projects";
@@ -37,8 +34,9 @@ function createProjectsList(projects) {
   const list = document.createElement("ul");
 
   projects.forEach((project) => {
-    if (!project || !project.title || !project.url) return;
-
+    if (!project || !project.title || !project.url) {
+      return;
+    }
     const li = document.createElement("li");
 
     const a = document.createElement("a");
@@ -145,40 +143,33 @@ function collapseAllExcept(containerEl, activeButton) {
 
 async function init() {
   const grid = document.getElementById("skills-grid");
-  const errorEl = document.getElementById("skills-error");
 
-  if (!grid) return;
-
-  try {
-    const skills = await loadSkills();
-
-    const cards = skills.map((skill, index) => createSkillCard(skill, index));
-    cards.forEach((card) => grid.appendChild(card));
-
-    grid.addEventListener("click", (event) => {
-      const button = event.target.closest(".details-toggle");
-      if (!button) return;
-
-      const detailsId = button.getAttribute("aria-controls");
-      const detailsEl = detailsId ? document.getElementById(detailsId) : null;
-      if (!detailsEl) return;
-
-      const expanded = button.getAttribute("aria-expanded") === "true";
-
-      if (expanded) {
-        setExpanded(button, detailsEl, false);
-      } else {
-        collapseAllExcept(grid, button);
-        setExpanded(button, detailsEl, true);
-      }
-    });
-  } catch (error) {
-    if (errorEl) {
-      errorEl.hidden = false;
-      errorEl.textContent =
-        "Could not load skills data. If you opened this page as a local file, try using VS Code Live Server.";
-    }
+  if (!grid) {
+    return;
   }
+
+  const skills = await loadSkills();
+
+  const cards = skills.map((skill, index) => createSkillCard(skill, index));
+  cards.forEach((card) => grid.appendChild(card));
+
+  grid.addEventListener("click", (event) => {
+    const button = event.target.closest(".details-toggle");
+    if (!button) return;
+
+    const detailsId = button.getAttribute("aria-controls");
+    const detailsEl = detailsId ? document.getElementById(detailsId) : null;
+    if (!detailsEl) return;
+
+    const expanded = button.getAttribute("aria-expanded") === "true";
+
+    if (expanded) {
+      setExpanded(button, detailsEl, false);
+    } else {
+      collapseAllExcept(grid, button);
+      setExpanded(button, detailsEl, true);
+    }
+  });
 }
 
 init();
