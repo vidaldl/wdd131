@@ -1,26 +1,24 @@
 import { loadSkills } from "./skills-data.js";
 
 function createProgressBar(proficiency, labelText) {
-  const progress = document.createElement("div");
-  progress.className = "progress";
-  progress.setAttribute("role", "progressbar");
-  progress.setAttribute("aria-label", labelText);
-  progress.setAttribute("aria-valuemin", "0");
-  progress.setAttribute("aria-valuemax", "100");
-  progress.setAttribute("aria-valuenow", String(proficiency));
+  const wrapper = document.createElement("div");
+  wrapper.className = "progress";
 
-  const fill = document.createElement("div");
-  fill.className = "progress__fill";
-  fill.style.width = `${proficiency}%`;
+  const label = document.createElement("span");
+  label.className = "progress__label";
+  label.textContent = `${proficiency}%`;
 
-  const value = document.createElement("span");
-  value.className = "progress__value";
-  value.textContent = `${proficiency}%`;
+  const bar = document.createElement("progress");
+  bar.className = "progress__bar";
+  bar.value = proficiency;
+  bar.max = 100;
+  bar.setAttribute("aria-label", labelText);
+  bar.textContent = `${proficiency}%`;
 
-  progress.appendChild(fill);
-  progress.appendChild(value);
+  wrapper.appendChild(label);
+  wrapper.appendChild(bar);
 
-  return progress;
+  return wrapper;
 }
 
 function createProjectsList(projects) {
